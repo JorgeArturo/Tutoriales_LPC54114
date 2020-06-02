@@ -143,8 +143,10 @@ void BOARD_BootClockRUN(void)
 name: BOARD_BootClockHSRUN
 called_from_default_init: true
 outputs:
+- {id: FXCOM5_clock.outFreq, value: 12 MHz}
 - {id: System_clock.outFreq, value: 96 MHz}
 settings:
+- {id: SYSCON.FXCOMCLKSEL5.sel, value: SYSCON.fro_12m}
 - {id: SYSCON.MAINCLKSELA.sel, value: SYSCON.fro_hf}
 sources:
 - {id: SYSCON.fro_hf.outFreq, value: 96 MHz}
@@ -176,6 +178,7 @@ void BOARD_BootClockHSRUN(void)
 
     /*!< Set up clock selectors - Attach clocks to the peripheries */
     CLOCK_AttachClk(kFRO_HF_to_MAIN_CLK);                  /*!< Switch MAIN_CLK to FRO_HF */
+    CLOCK_AttachClk(kFRO12M_to_FLEXCOMM5);                  /*!< Switch FLEXCOMM5 to FRO12M */
     /*< Set SystemCoreClock variable. */
     SystemCoreClock = BOARD_BOOTCLOCKHSRUN_CORE_CLOCK;
 #endif

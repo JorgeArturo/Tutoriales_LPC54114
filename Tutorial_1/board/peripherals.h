@@ -6,9 +6,30 @@
 #ifndef _PERIPHERALS_H_
 #define _PERIPHERALS_H_
 
+/***********************************************************************************************************************
+ * Included files
+ **********************************************************************************************************************/
+#include "fsl_common.h"
+#include "fsl_spi.h"
+
 #if defined(__cplusplus)
 extern "C" {
 #endif /* __cplusplus */
+
+/***********************************************************************************************************************
+ * Definitions
+ **********************************************************************************************************************/
+/* Definitions for BOARD_InitPeripherals_cm4 functional group */
+/* BOARD_InitPeripherals_cm4 defines for FLEXCOMM5 */
+/* Definition of peripheral ID */
+#define FLEXCOMM5_PERIPHERAL ((SPI_Type *)FLEXCOMM5)
+/* Definition of the clock source frequency */
+#define FLEXCOMM5_CLOCK_SOURCE 12000000UL
+
+/***********************************************************************************************************************
+ * Global variables
+ **********************************************************************************************************************/
+extern const spi_master_config_t FLEXCOMM5_config;
 
 /***********************************************************************************************************************
  * Initialization functions

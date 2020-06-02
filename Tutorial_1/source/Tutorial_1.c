@@ -39,9 +39,33 @@
 #include "clock_config.h"
 #include "LPC54114_cm4.h"
 #include "fsl_debug_console.h"
+#include "mx25r_flash.h"
 /* TODO: insert other include files here. */
 
+struct mx25r_instance mx25_instance;
+struct mx25r_rdid_result mfg;
+const char txt[11] = {"HOLA MUNDO"};
+char txt_reader[1024];
+
 /* TODO: insert other definitions and declarations here. */
+
+transfer_cb_t inter_func_mx25r(void *transfer_prv, uint8_t *tx_data, uint8_t *rx_data, size_t dataSize, bool eof){
+
+	spi_transfer_t xmit;
+
+	xmit.txData = tx_data;
+	xmit.rxData = rx_data;
+	xmit.dataSize = dataSize;
+	if(eof)
+		xmit.configFlags = kSPI_FrameAssert;
+	else
+		xmit.configFlags = 0;
+
+	SPI_MasterTransferBlocking(FLEXCOMM5_PERIPHERAL, &xmit);
+
+	return mx25r_err_ok;
+
+}
 
 /*
  * @brief   Application entry point.
@@ -55,16 +79,31 @@ int main(void) {
   	/* Init FSL debug console. */
     BOARD_InitDebugConsole();
 
-    PRINTF("Hello World\n");
+    if(mx25r_init(&mx25_instance, inter_func_mx25r, NULL) == mx25r_err_ok)
+    	PRINTF("Inicializando memoria externa\n");
+
+    if(mx25r_cmd_rdid(&mx25_instance,&mfg) == mx25r_err_ok)
+    	PRINTF("rdid %X,%X,%X\r\n",mfg.device[0],mfg.device[1],mfg.manufacturer);
+
+    if(mx25r_cmd_write(&mx25_instance, 0x000200, &txt, sizeof(txt)) == mx25r_err_ok)
+    	PRINTF("Se ha escrito %d \n\r",sizeof(txt));
+
+    if(mx25r_cmd_read(&mx25_instance, 0x000200, &txt_reader, sizeof(txt_reader)) == mx25r_err_ok)
+    	PRINTF("Se ha leido %d \r\n",sizeof(txt_reader));
+
+    PRINTF("%s\r\n",txt_reader);
 
     /* Force the counter to be placed into memory. */
-    volatile static int i = 0 ;
+    volatile static int i = 0;
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
+
         for(i=1000000;i>0;i--);
         LED_BLUE_TOGGLE();
         LED_GREEN_TOGGLE();
         LED_RED_TOGGLE();
+
     }
+
     return 0 ;
 }

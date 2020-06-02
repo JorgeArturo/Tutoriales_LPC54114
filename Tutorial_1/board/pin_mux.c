@@ -97,6 +97,7 @@ void BOARD_InitBootPins(void)
 {
     BOARD_InitPins_cm4();
     BOARD_InitLEDsPins();
+    BOARD_InitSPI_FLASHPins();
     BOARD_InitDEBUG_UARTPins();
 }
 
@@ -412,7 +413,7 @@ void BOARD_InitSecureMCUPins(void)
 /*
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 BOARD_InitSPI_FLASHPins:
-- options: {prefix: BOARD_, coreID: cm4, enableClock: 'true'}
+- options: {callFromInitBoot: 'true', prefix: BOARD_, coreID: cm4, enableClock: 'true'}
 - pin_list:
   - {pin_num: '58', peripheral: FLEXCOMM5, signal: TXD_SCL_MISO, pin_signal: PIO0_18/FC5_TXD_SCL_MISO/SCT0_OUT0/CTIMER0_MAT0}
   - {pin_num: '59', peripheral: FLEXCOMM5, signal: SCK, pin_signal: PIO0_19/FC5_SCK/SCT0_OUT1/CTIMER0_MAT1}

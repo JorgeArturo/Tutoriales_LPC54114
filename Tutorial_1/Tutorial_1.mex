@@ -258,6 +258,7 @@
             <function name="BOARD_InitSPI_FLASHPins">
                <description>Configures pin routing and optionally pin electrical features.</description>
                <options>
+                  <callFromInitBoot>true</callFromInitBoot>
                   <prefix>BOARD_</prefix>
                   <coreID>cm4</coreID>
                   <enableClock>true</enableClock>
@@ -565,9 +566,11 @@
                   <clock_source id="SYSCON.fro_hf.outFreq" value="96 MHz" locked="false" enabled="false"/>
                </clock_sources>
                <clock_outputs>
+                  <clock_output id="FXCOM5_clock.outFreq" value="12 MHz" locked="false" accuracy=""/>
                   <clock_output id="System_clock.outFreq" value="96 MHz" locked="false" accuracy=""/>
                </clock_outputs>
                <clock_settings>
+                  <setting id="SYSCON.FXCOMCLKSEL5.sel" value="SYSCON.fro_12m" locked="false"/>
                   <setting id="SYSCON.MAINCLKSELA.sel" value="SYSCON.fro_hf" locked="false"/>
                </clock_settings>
                <called_from_default_init>true</called_from_default_init>
@@ -582,6 +585,18 @@
          <dcdx_configurations/>
       </dcdx>
       <periphs name="Peripherals" version="7.0" enabled="true" update_project_code="true">
+         <dependencies>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcomm_spi" description="FLEXCOMM Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcomm_spi" description="Unsupported version of the FLEXCOMM Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">2.1.0</data>
+               </feature>
+            </dependency>
+         </dependencies>
          <generated_project_files>
             <file path="board/peripherals.c" update_enabled="true"/>
             <file path="board/peripherals.h" update_enabled="true"/>
@@ -593,8 +608,63 @@
             <functional_group name="BOARD_InitPeripherals_cm4" uuid="35304192-dcd2-4c25-bdf3-6c9c60ec1aa8" called_from_default_init="true" id_prefix="" core="cm4">
                <description></description>
                <options/>
-               <dependencies/>
-               <instances/>
+               <dependencies>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM5.spi_miso" description="Signal SPI master data in, slave data out of the peripheral FLEXCOMM5 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
+                     <feature name="routed" evaluation="">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM5.spi_mosi" description="Signal SPI master data out, slave data in of the peripheral FLEXCOMM5 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
+                     <feature name="routed" evaluation="">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM5.spi_sck" description="Signal SPI serial clock pin of the peripheral FLEXCOMM5 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
+                     <feature name="routed" evaluation="">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM5.spi_ss3" description="Signal SPI slave select 3 of the peripheral FLEXCOMM5 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
+                     <feature name="routed" evaluation="">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="ClockOutput" resourceId="FXCOM5_clock" description="FXCOM5 clock is inactive. Problem must be resolved in another tool." problem_level="2" source="Peripherals:BOARD_InitPeripherals_cm4">
+                     <feature name="frequency" evaluation="greaterThan">
+                        <data type="Frequency" unit="Hz">0</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <instances>
+                  <instance name="FLEXCOMM5" uuid="623b677a-39c0-4c85-8ac3-e3c290a71eca" type="flexcomm_spi" type_id="flexcomm_spi_481dadba00035f986f31ed9ac95af181" mode="SPI_Polling" peripheral="FLEXCOMM5" enabled="true" comment="" custom_name_enabled="false">
+                     <config_set name="fsl_spi">
+                        <setting name="spi_mode" value="kSPI_Master"/>
+                        <setting name="clockSource" value="FXCOMFunctionClock"/>
+                        <setting name="clockSourceFreq" value="BOARD_BootClockHSRUN"/>
+                        <struct name="spi_master_config">
+                           <setting name="enableLoopback" value="false"/>
+                           <setting name="enableMaster" value="true"/>
+                           <setting name="polarity" value="kSPI_ClockPolarityActiveHigh"/>
+                           <setting name="phase" value="kSPI_ClockPhaseFirstEdge"/>
+                           <setting name="direction" value="kSPI_MsbFirst"/>
+                           <setting name="baudRate_Bps" value="500000"/>
+                           <setting name="dataWidth" value="kSPI_Data8Bits"/>
+                           <setting name="sselNum" value="kSPI_Ssel3"/>
+                           <set name="sselPol_set">
+                              <selected/>
+                           </set>
+                           <setting name="txWatermark" value="kSPI_TxFifo0"/>
+                           <setting name="rxWatermark" value="kSPI_RxFifo1"/>
+                           <struct name="delayConfig">
+                              <setting name="preDelay" value="0"/>
+                              <setting name="postDelay" value="0"/>
+                              <setting name="frameDelay" value="0"/>
+                              <setting name="transferDelay" value="0"/>
+                           </struct>
+                        </struct>
+                     </config_set>
+                  </instance>
+               </instances>
             </functional_group>
             <functional_group name="BOARD_InitPeripherals_cm0plus" uuid="52029ed6-c35d-48dd-bb29-3c4ad79cee97" called_from_default_init="false" id_prefix="" core="cm0plus">
                <description></description>
@@ -607,7 +677,7 @@
             <component name="system" uuid="03ecd79b-6df6-4f94-aa75-8652c339c124" type_id="system">
                <config_set_global name="global_system_definitions"/>
             </component>
-            <component name="msg" uuid="6c3cc454-5873-4e60-a5ea-f5db3a386f10" type_id="msg_6e2baaf3b97dbeef01c0043275f9a0e7">
+            <component name="msg" uuid="c07dea30-8439-49ac-9312-0ea153446028" type_id="msg_6e2baaf3b97dbeef01c0043275f9a0e7">
                <config_set_global name="global_messages"/>
             </component>
          </components>

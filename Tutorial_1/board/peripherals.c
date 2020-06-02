@@ -43,10 +43,78 @@ component:
 #include "peripherals.h"
 
 /***********************************************************************************************************************
+ * BOARD_InitPeripherals_cm4 functional group
+ **********************************************************************************************************************/
+/***********************************************************************************************************************
+ * FLEXCOMM5 initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'FLEXCOMM5'
+- type: 'flexcomm_spi'
+- mode: 'SPI_Polling'
+- custom_name_enabled: 'false'
+- type_id: 'flexcomm_spi_481dadba00035f986f31ed9ac95af181'
+- functional_group: 'BOARD_InitPeripherals_cm4'
+- peripheral: 'FLEXCOMM5'
+- config_sets:
+  - fsl_spi:
+    - spi_mode: 'kSPI_Master'
+    - clockSource: 'FXCOMFunctionClock'
+    - clockSourceFreq: 'BOARD_BootClockHSRUN'
+    - spi_master_config:
+      - enableLoopback: 'false'
+      - enableMaster: 'true'
+      - polarity: 'kSPI_ClockPolarityActiveHigh'
+      - phase: 'kSPI_ClockPhaseFirstEdge'
+      - direction: 'kSPI_MsbFirst'
+      - baudRate_Bps: '500000'
+      - dataWidth: 'kSPI_Data8Bits'
+      - sselNum: 'kSPI_Ssel3'
+      - sselPol_set: ''
+      - txWatermark: 'kSPI_TxFifo0'
+      - rxWatermark: 'kSPI_RxFifo1'
+      - delayConfig:
+        - preDelay: '0'
+        - postDelay: '0'
+        - frameDelay: '0'
+        - transferDelay: '0'
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+const spi_master_config_t FLEXCOMM5_config = {
+  .enableLoopback = false,
+  .enableMaster = true,
+  .polarity = kSPI_ClockPolarityActiveHigh,
+  .phase = kSPI_ClockPhaseFirstEdge,
+  .direction = kSPI_MsbFirst,
+  .baudRate_Bps = 500000,
+  .dataWidth = kSPI_Data8Bits,
+  .sselNum = kSPI_Ssel3,
+  .sselPol = kSPI_SpolActiveAllLow,
+  .txWatermark = kSPI_TxFifo0,
+  .rxWatermark = kSPI_RxFifo1,
+  .delayConfig = {
+    .preDelay = 0,
+    .postDelay = 0,
+    .frameDelay = 0,
+    .transferDelay = 0
+  }
+};
+
+void FLEXCOMM5_init(void) {
+  RESET_PeripheralReset(kFC5_RST_SHIFT_RSTn);
+  /* Initialization function */
+  SPI_MasterInit(FLEXCOMM5_PERIPHERAL, &FLEXCOMM5_config, FLEXCOMM5_CLOCK_SOURCE);
+}
+
+/***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
 void BOARD_InitPeripherals_cm4(void)
 {
+  /* Initialize components */
+  FLEXCOMM5_init();
 }
 
 /***********************************************************************************************************************
