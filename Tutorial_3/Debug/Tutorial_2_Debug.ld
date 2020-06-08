@@ -6,7 +6,7 @@
  * Generated linker script file for LPC54114J256
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.23
- * MCUXpresso IDE v11.1.1 [Build 3241] [2020-03-02] on 4/06/2020 07:01:58 PM
+ * MCUXpresso IDE v11.1.1 [Build 3241] [2020-03-02] on 8/06/2020 01:17:22 PM
  */
 
 INCLUDE "Tutorial_2_Debug_library.ld"
