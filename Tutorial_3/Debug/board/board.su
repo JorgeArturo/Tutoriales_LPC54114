@@ -1,0 +1,2 @@
+board.c:31:10:BOARD_InitDebugConsole	16	static
+board.c:47:10:BOARD_InitDebugConsole_Core1	16	static

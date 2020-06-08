@@ -1,0 +1,5 @@
+fsl_dma.h:413:20:DMA_EnableChannel	16	static
+peripherals.c:75:6:DMA0_init	4	static
+peripherals.c:147:6:FLEXCOMM0_init	16	static
+peripherals.c:162:6:BOARD_InitPeripherals_cm4	8	static
+peripherals.c:175:6:BOARD_InitBootPeripherals	8	static

@@ -1,0 +1,10 @@
+system_LPC54114_cm4.c:71:17:GetWdtOscFreq	16	static
+system_LPC54114_cm4.c:80:17:pllDecodeN	32	static
+system_LPC54114_cm4.c:114:17:pllDecodeP	32	static
+system_LPC54114_cm4.c:147:17:pllDecodeM	32	static
+system_LPC54114_cm4.c:181:17:findPllPreDiv	24	static
+system_LPC54114_cm4.c:200:17:findPllPostDiv	24	static
+system_LPC54114_cm4.c:219:17:findPllMMult	24	static
+system_LPC54114_cm4.c:241:6:SystemInit	8	static
+system_LPC54114_cm4.c:259:6:SystemCoreClockUpdate	64	static
+system_LPC54114_cm4.c:347:29:SystemInitHook	4	static

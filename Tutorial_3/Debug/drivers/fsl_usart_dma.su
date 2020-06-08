@@ -1,0 +1,10 @@
+fsl_usart.h:386:20:USART_EnableTxDMA	16	static
+fsl_usart.h:401:20:USART_EnableRxDMA	16	static
+fsl_usart_dma.c:42:13:USART_TransferSendDMACallback	40	static
+fsl_usart_dma.c:66:13:USART_TransferReceiveDMACallback	40	static
+fsl_usart_dma.c:94:10:USART_TransferCreateHandleDMA	32	static
+fsl_usart_dma.c:161:10:USART_TransferSendDMA	88	static
+fsl_usart_dma.c:213:10:USART_TransferReceiveDMA	88	static
+fsl_usart_dma.c:260:6:USART_TransferAbortSendDMA	16	static
+fsl_usart_dma.c:278:6:USART_TransferAbortReceiveDMA	16	static
+fsl_usart_dma.c:300:10:USART_TransferGetReceiveCountDMA	32	static
