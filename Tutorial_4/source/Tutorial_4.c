@@ -80,7 +80,7 @@ int main(void) {
   	/* Init FSL debug console. */
     BOARD_InitDebugConsole();
 
-    PRINTF("Burst Mode ACtived\n");
+    PRINTF("Trigger by software\n");
 
     /* Force the counter to be placed into memory. */
     volatile static double i = 0 ;

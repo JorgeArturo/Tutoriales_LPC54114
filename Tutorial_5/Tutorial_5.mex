@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding= "UTF-8" ?>
-<configuration name="LPC54114J256" version="1.7" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_1.7 http://mcuxpresso.nxp.com/XSD/mex_configuration_1.7.xsd" uuid="30fdbc52-b0f8-458e-801c-7b5ea84be625" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_1.7" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<configuration name="LPC54114J256" version="1.7" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_1.7 http://mcuxpresso.nxp.com/XSD/mex_configuration_1.7.xsd" uuid="40ff0615-fe44-41b5-8523-bc0cb5e87742" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_1.7" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <common>
       <processor>LPC54114J256</processor>
       <package>LPC54114J256BD64</package>
@@ -9,7 +9,7 @@
          <core name="Cortex-M0P" id="cm0plus" description=""/>
          <core name="Cortex-M4F" id="cm4" description=""/>
       </cores>
-      <description>Configuration imported from Tutorial_2</description>
+      <description>Configuration imported from Tutorial_5</description>
    </common>
    <preferences>
       <validate_boot_init_only>true</validate_boot_init_only>
@@ -18,7 +18,10 @@
    </preferences>
    <tools>
       <pins name="Pins" version="7.0" enabled="true" update_project_code="true">
-         <generated_project_files/>
+         <generated_project_files>
+            <file path="board/pin_mux.c" update_enabled="true"/>
+            <file path="board/pin_mux.h" update_enabled="true"/>
+         </generated_project_files>
          <pins_profile>
             <processor_version>7.0.1</processor_version>
             <pin_labels>
@@ -41,7 +44,7 @@
                <pin_label pin_num="21" pin_signal="VREFN" label="SJ1[2]/P4[3]/GND"/>
                <pin_label pin_num="10" pin_signal="PIO1_17/MCLK/UTICK_CAP3" label="J9[9]/P1_17-IR_LEARN_EN"/>
                <pin_label pin_num="11" pin_signal="PIO0_29/FC1_RXD_SDA_MOSI/SCT0_OUT2/CTIMER0_MAT3/CTIMER0_CAP1/CTIMER0_MAT1/ADC0_0" label="J2[5]/D2[1]/P0_29-CT32B0_MAT3-RED" identifier="LED_RED"/>
-               <pin_label pin_num="12" pin_signal="PIO0_30/FC1_TXD_SCL_MISO/SCT0_OUT3/CTIMER0_MAT2/CTIMER0_CAP2/ADC0_1" label="J9[2]/P0_30-ADC1"/>
+               <pin_label pin_num="12" pin_signal="PIO0_30/FC1_TXD_SCL_MISO/SCT0_OUT3/CTIMER0_MAT2/CTIMER0_CAP2/ADC0_1" label="J9[2]/P0_30-ADC1" identifier="Encoder_Analog"/>
                <pin_label pin_num="13" pin_signal="PIO0_31/PDM0_CLK/FC2_CTS_SDA_SSEL0/CTIMER2_CAP2/CTIMER0_CAP3/CTIMER0_MAT3/ADC0_2" label="J2[17]/J3[2]/P1[7]/U3[4]/SW2/P0_31-PDM0_CLK-ISP0_EN" identifier="SW2"/>
                <pin_label pin_num="14" pin_signal="PIO1_0/PDM0_DATA/FC2_RTS_SCL_SSEL1/CTIMER3_MAT1/CTIMER0_CAP0/ADC0_3" label="J2[3]/P1_0-PDM0_DATA-CT32B3_MAT1"/>
                <pin_label pin_num="15" pin_signal="PIO1_1/SWO/SCT0_OUT4/FC5_SSEL2/FC4_TXD_SCL_MISO/ADC0_4" label="J1[15]/P1_1-FC5_SSEL2"/>
@@ -52,7 +55,7 @@
                <pin_label pin_num="20" pin_signal="VSSA" label="GND"/>
                <pin_label pin_num="26" pin_signal="PIO1_6/FC7_SCK/CTIMER1_CAP2/CTIMER1_MAT2/USB0_VBUS/ADC0_9" label="J1[14]/J5[1]/JP10[2]/P1_6-FC7_SCK-USB_VBUS" identifier="USB_VBUS"/>
                <pin_label pin_num="27" pin_signal="PIO1_7/FC7_RXD_SDA_MOSI_DATA/CTIMER1_MAT2/CTIMER1_CAP2/ADC0_10" label="J1[10]/P1_7-FC7_RXD_SDA_MOSI_DATA"/>
-               <pin_label pin_num="28" pin_signal="PIO1_8/FC7_TXD_SCL_MISO_WS/CTIMER1_MAT3/CTIMER1_CAP3/ADC0_11" label="J1[12]/J9[6]/P1_8-ADC11-FC7_TXD_SCL_MISO_FRAME"/>
+               <pin_label pin_num="28" pin_signal="PIO1_8/FC7_TXD_SCL_MISO_WS/CTIMER1_MAT3/CTIMER1_CAP3/ADC0_11" label="J1[12]/J9[6]/P1_8-ADC11-FC7_TXD_SCL_MISO_FRAME" identifier="Potenciometer"/>
                <pin_label pin_num="29" pin_signal="PIO1_9/FC3_RXD_SDA_MOSI/CTIMER0_CAP2/USB0_UP_LED" label="J9[5]/D2[3]/P1_9-BLUE_LED" identifier="LED_BLUE"/>
                <pin_label pin_num="30" pin_signal="PIO1_10/FC6_TXD_SCL_MISO_WS/SCT0_OUT4/FC1_SCK/USB0_FRAME" label="J9[8]/D2[4]/P1_10-SCT4-LED_GREEN" identifier="LED_GREEN"/>
                <pin_label pin_num="31" pin_signal="PIO0_0/FC0_RXD_SDA_MOSI/FC3_CTS_SDA_SSEL0/CTIMER0_CAP0/SCT0_OUT3" label="U18[4]/TO_MUX_P0_0-ISP_RX" identifier="DEBUG_UART_RX"/>
@@ -98,13 +101,21 @@
                   <enableClock>true</enableClock>
                </options>
                <dependencies>
+                  <dependency resourceType="Peripheral" resourceId="ADC0" description="Peripheral ADC0 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_cm4">
+                     <feature name="initialized" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
                   <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_cm4">
                      <feature name="enabled" evaluation="equal">
                         <data>true</data>
                      </feature>
                   </dependency>
                </dependencies>
-               <pins/>
+               <pins>
+                  <pin peripheral="ADC0" signal="CH, 11" pin_num="28" pin_signal="PIO1_8/FC7_TXD_SCL_MISO_WS/CTIMER1_MAT3/CTIMER1_CAP3/ADC0_11"/>
+                  <pin peripheral="ADC0" signal="CH, 1" pin_num="12" pin_signal="PIO0_30/FC1_TXD_SCL_MISO/SCT0_OUT3/CTIMER0_MAT2/CTIMER0_CAP2/ADC0_1"/>
+               </pins>
             </function>
             <function name="BOARD_InitLink2MCUPins">
                <description>Configures pin routing and optionally pin electrical features.</description>
@@ -561,11 +572,12 @@
                   <clock_source id="SYSCON.fro_hf.outFreq" value="96 MHz" locked="false" enabled="false"/>
                </clock_sources>
                <clock_outputs>
-                  <clock_output id="FXCOM0_clock.outFreq" value="12 MHz" locked="false" accuracy=""/>
+                  <clock_output id="ADC_clock.outFreq" value="48 MHz" locked="false" accuracy=""/>
                   <clock_output id="System_clock.outFreq" value="96 MHz" locked="false" accuracy=""/>
                </clock_outputs>
                <clock_settings>
-                  <setting id="SYSCON.FXCOMCLKSEL0.sel" value="SYSCON.fro_12m" locked="false"/>
+                  <setting id="SYSCON.ADCCLKDIV.scale" value="2" locked="false"/>
+                  <setting id="SYSCON.ADCCLKSEL.sel" value="SYSCON.fro_hf" locked="false"/>
                   <setting id="SYSCON.MAINCLKSELA.sel" value="SYSCON.fro_hf" locked="false"/>
                </clock_settings>
                <called_from_default_init>true</called_from_default_init>
@@ -581,24 +593,14 @@
       </dcdx>
       <periphs name="Peripherals" version="7.0" enabled="true" update_project_code="true">
          <dependencies>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.lpc_dma" description="DMA Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.lpc_adc" description="ADC Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data type="Boolean">true</data>
                </feature>
             </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.lpc_dma" description="Unsupported version of the DMA Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.lpc_adc" description="Unsupported version of the ADC Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
                <feature name="version" evaluation="equivalent">
                   <data type="Version">2.4.0</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcomm_usart" description="FLEXCOMM Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data type="Boolean">true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcomm_usart" description="Unsupported version of the FLEXCOMM Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="equivalent">
-                  <data type="Version">2.1.0</data>
                </feature>
             </dependency>
          </dependencies>
@@ -614,89 +616,106 @@
                <description></description>
                <options/>
                <dependencies>
-                  <dependency resourceType="ClockOutput" resourceId="FXCOM0_clock" description="FXCOM0 clock is inactive. Problem must be resolved in another tool." problem_level="2" source="Peripherals:BOARD_InitPeripherals_cm4">
+                  <dependency resourceType="ClockOutput" resourceId="ADC_clock" description="ADC clock is inactive. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
                      <feature name="frequency" evaluation="greaterThan">
                         <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM0.usart_rxd" description="Signal RX of the peripheral FLEXCOMM0 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
-                     <feature name="routed" evaluation="equal">
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC0.adc_se.11" description="Signal Input 11 of the peripheral ADC0 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
+                     <feature name="routed" evaluation="">
                         <data type="Boolean">true</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="FLEXCOMM0.usart_txd" description="Signal TX of the peripheral FLEXCOMM0 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
-                     <feature name="routed" evaluation="equal">
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC0.adc_se.1" description="Signal Input 1 of the peripheral ADC0 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
+                     <feature name="routed" evaluation="">
                         <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcomm_usart_dma" description="The fsl_usart_dma driver is missing in the project (required for the DMA mode). Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
-                     <feature name="enabled" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcomm_usart_dma" description="The compatible version of the fsl_usart_dma driver is not available in the project (required for the DMA mode). Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm4">
-                     <feature name="version" evaluation="compatible">
-                        <data type="Version">2.0.0</data>
                      </feature>
                   </dependency>
                </dependencies>
                <instances>
-                  <instance name="DMA0" uuid="cbf68d6c-d31d-4e0c-bfb2-162753563433" type="lpc_dma" type_id="lpc_dma_c13ca997a68f2ca6c666916ba13db7d7" mode="basic" peripheral="DMA0" enabled="true" comment="" custom_name_enabled="false">
-                     <config_set name="fsl_dma">
-                        <array name="dma_table">
-                           <struct name="0"/>
+                  <instance name="ADC0" uuid="e695fc37-f159-41e3-9e03-c2324c6f9a4d" type="lpc_adc" type_id="lpc_adc_d74172b5bd0591c0d32a6c93c043a67f" mode="ADC" peripheral="ADC0" enabled="true" comment="" custom_name_enabled="false">
+                     <config_set name="fsl_adc">
+                        <setting name="doSelfCalibration" value="true"/>
+                        <setting name="enableTempSensor" value="false"/>
+                        <struct name="adcConfig">
+                           <setting name="clockMode" value="kADC_ClockAsynchronousMode"/>
+                           <setting name="clockSourceFreq" value="BOARD_BootClockHSRUN"/>
+                           <setting name="clockDividerNumber" value="0"/>
+                           <setting name="resolution" value="kADC_Resolution12bit"/>
+                           <setting name="sampleTimeNumber" value="0"/>
+                           <setting name="enableBypassCalibration" value="false"/>
+                        </struct>
+                        <struct name="thresholdConfig">
+                           <setting name="ADC_SetThreshold0" value="false"/>
+                           <struct name="thresholdSettingsPair0">
+                              <setting name="lowValue" value="0"/>
+                              <setting name="highValue" value="0"/>
+                           </struct>
+                           <setting name="ADC_SetThreshold1" value="false"/>
+                           <struct name="thresholdSettingsPair1">
+                              <setting name="lowValue" value="0"/>
+                              <setting name="highValue" value="0"/>
+                           </struct>
+                        </struct>
+                        <setting name="enableSeqConfigurationA" value="true"/>
+                        <struct name="adcConvSeqConfigA">
+                           <setting name="enableHighPriority" value="false"/>
+                           <struct name="adcConvSeqConfig">
+                              <setting name="triggerMaskM" value="0U"/>
+                              <setting name="triggerPolarity" value="kADC_TriggerPolarityPositiveEdge"/>
+                              <setting name="enableSyncBypass" value="false"/>
+                              <setting name="enableSingleStep" value="false"/>
+                              <setting name="interruptMode" value="kADC_InterruptForEachSequence"/>
+                           </struct>
+                        </struct>
+                        <setting name="enableSeqConfigurationB" value="false"/>
+                        <struct name="adcConvSeqConfigB">
+                           <setting name="enableHighPriority" value="false"/>
+                           <struct name="adcConvSeqConfig">
+                              <setting name="triggerMaskM" value="0U"/>
+                              <setting name="triggerPolarity" value="kADC_TriggerPolarityNegativeEdge"/>
+                              <setting name="enableSyncBypass" value="false"/>
+                              <setting name="enableSingleStep" value="false"/>
+                              <setting name="interruptMode" value="kADC_InterruptForEachConversion"/>
+                           </struct>
+                        </struct>
+                        <array name="channels">
+                           <struct name="0">
+                              <setting name="channelNumber" value="CH.11"/>
+                              <setting name="channelThresholdPair" value="thresholdPair0"/>
+                              <setting name="thresholdInterruptMode" value="kADC_ThresholdInterruptDisabled"/>
+                              <setting name="conversion_sequence" value="a"/>
+                           </struct>
+                           <struct name="1">
+                              <setting name="channelNumber" value="CH.1"/>
+                              <setting name="channelThresholdPair" value="thresholdPair0"/>
+                              <setting name="thresholdInterruptMode" value="kADC_ThresholdInterruptDisabled"/>
+                              <setting name="conversion_sequence" value="a"/>
+                           </struct>
                         </array>
-                        <array name="dma_channels"/>
-                        <setting name="init_interrupt" value="false"/>
-                        <struct name="dma_interrupt">
-                           <setting name="IRQn" value="DMA0_IRQn"/>
+                        <set name="interrupt_sel">
+                           <selected/>
+                        </set>
+                        <setting name="enable_irq_seqA" value="false"/>
+                        <struct name="adc_interrupt_seqA">
+                           <setting name="IRQn" value="ADC0_SEQA_IRQn"/>
                            <setting name="enable_priority" value="false"/>
                            <setting name="priority" value="0"/>
                            <setting name="enable_custom_name" value="false"/>
                         </struct>
-                     </config_set>
-                  </instance>
-                  <instance name="FLEXCOMM0" uuid="13bbb427-93dc-432f-963f-658a7c735014" type="flexcomm_usart" type_id="flexcomm_usart_c0a0c6d3d3ef57701b439b00070052a8" mode="dma" peripheral="FLEXCOMM0" enabled="true" comment="" custom_name_enabled="false">
-                     <config_set name="dmaCfg">
-                        <struct name="dma_channels">
-                           <setting name="enable_rx_dma_channel" value="false"/>
-                           <struct name="dma_rx_channel">
-                              <setting name="DMA_source" value="kDmaRequestFlexcomm0Rx"/>
-                              <setting name="init_channel_priority" value="false"/>
-                              <setting name="dma_priority" value="kDMA_ChannelPriority0"/>
-                              <setting name="enable_custom_name" value="false"/>
-                           </struct>
-                           <setting name="enable_tx_dma_channel" value="true"/>
-                           <struct name="dma_tx_channel">
-                              <setting name="DMA_source" value="kDmaRequestFlexcomm0Tx"/>
-                              <setting name="init_channel_priority" value="false"/>
-                              <setting name="dma_priority" value="kDMA_ChannelPriority0"/>
-                              <setting name="enable_custom_name" value="false"/>
-                           </struct>
-                        </struct>
-                        <struct name="usart_dma_handle">
+                        <setting name="enable_irq_seqB" value="false"/>
+                        <struct name="adc_interrupt_seqB">
+                           <setting name="IRQn" value="ADC0_SEQB_IRQn"/>
+                           <setting name="enable_priority" value="false"/>
+                           <setting name="priority" value="0"/>
                            <setting name="enable_custom_name" value="false"/>
-                           <setting name="init_callback" value="true"/>
-                           <setting name="callback_fcn" value="FLEXCOMM0_USART_CALLBACK"/>
-                           <setting name="user_data" value=""/>
                         </struct>
-                     </config_set>
-                     <config_set name="usartConfig_t" quick_selection="QuickSelection1">
-                        <struct name="usartConfig">
-                           <setting name="clockSource" value="FXCOMFunctionClock"/>
-                           <setting name="clockSourceFreq" value="BOARD_BootClockHSRUN"/>
-                           <setting name="baudRate_Bps" value="115200"/>
-                           <setting name="syncMode" value="kUSART_SyncModeDisabled"/>
-                           <setting name="parityMode" value="kUSART_ParityDisabled"/>
-                           <setting name="stopBitCount" value="kUSART_OneStopBit"/>
-                           <setting name="bitCountPerChar" value="kUSART_8BitsPerChar"/>
-                           <setting name="loopback" value="false"/>
-                           <setting name="txWatermark" value="kUSART_TxFifo0"/>
-                           <setting name="rxWatermark" value="kUSART_RxFifo1"/>
-                           <setting name="enableRx" value="true"/>
-                           <setting name="enableTx" value="true"/>
-                           <setting name="clockPolarity" value="kUSART_RxSampleOnFallingEdge"/>
-                           <setting name="enableContinuousSCLK" value="false"/>
+                        <setting name="enable_irq_thcmp" value="false"/>
+                        <struct name="adc_interrupt_thcmp">
+                           <setting name="IRQn" value="ADC0_THCMP_IRQn"/>
+                           <setting name="enable_priority" value="false"/>
+                           <setting name="priority" value="0"/>
+                           <setting name="enable_custom_name" value="false"/>
                         </struct>
                      </config_set>
                   </instance>
@@ -710,10 +729,10 @@
             </functional_group>
          </functional_groups>
          <components>
-            <component name="system" uuid="06a997bd-116b-4b40-86fd-4a2a45acc8e6" type_id="system">
+            <component name="system" uuid="ab1c979e-b0c3-4f8b-9b80-03cc44c7f6c4" type_id="system">
                <config_set_global name="global_system_definitions"/>
             </component>
-            <component name="msg" uuid="12359959-1d3d-4655-9ee3-12b9abda79ee" type_id="msg_6e2baaf3b97dbeef01c0043275f9a0e7">
+            <component name="msg" uuid="503887e5-16fe-4b80-ac2f-1e6c555e7b78" type_id="msg_6e2baaf3b97dbeef01c0043275f9a0e7">
                <config_set_global name="global_messages"/>
             </component>
          </components>

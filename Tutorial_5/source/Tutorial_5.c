@@ -29,7 +29,7 @@
  */
  
 /**
- * @file    Tutorial_2.c
+ * @file    Tutorial_5.c
  * @brief   Application entry point.
  */
 #include <stdio.h>
@@ -39,30 +39,10 @@
 #include "clock_config.h"
 #include "LPC54114_cm4.h"
 #include "fsl_debug_console.h"
+#include "fsl_power.h"
 /* TODO: insert other include files here. */
 
-uint8_t StartAddress[1024] = {"La DMA puede llevar a problemas de coherencia de caché. Imagine una CPU equipada con una memoria caché y una memoria externa que se pueda acceder directamente por los dispositivos que utilizan DMA. Cuando la CPU accede a X lugar en la memoria, el valor actual se almacena en la caché. Si se realizan operaciones posteriores en X, se actualizará la copia en caché de X, pero no la versión de memoria externa de X. Si la caché no se vacía en la memoria antes de que otro dispositivo intente acceder a X, el dispositivo recibirá un valor caducado de X.Del mismo modo, si la copia en caché de X no es invalidada cuando un dispositivo escribe un nuevo valor en la memoria, entonces la CPU funcionará con un valor caducado de X.Este problema puede ser abordado en el diseño del sistema de las siguientes dos formas:Los sistemas de caché coherente implementan un método en el hardware externo mediante el cual se escribe una señal en el controlador de caché, la cual realiza una invalidación de la caché para ...."};
-uint8_t EndAddress[1024];
-
-usart_transfer_t xmit;
-volatile bool txOnGoing = false;
-volatile bool rxOnGoing = false;
-
-void FLEXCOMM0_USART_CALLBACK(USART_Type *base, usart_dma_handle_t *handle, status_t status, void *userData){
-
-    userData = userData;
-
-    if (kStatus_USART_TxIdle == status)
-    {
-        txOnGoing    = false;
-    }
-
-    if (kStatus_USART_RxIdle == status)
-    {
-        rxOnGoing     = false;
-    }
-
-}
+adc_result_info_t adc_data[2];
 
 /* TODO: insert other definitions and declarations here. */
 
@@ -71,6 +51,12 @@ void FLEXCOMM0_USART_CALLBACK(USART_Type *base, usart_dma_handle_t *handle, stat
  */
 int main(void) {
 
+    POWER_DisablePD(kPDRUNCFG_PD_ADC0);
+    POWER_DisablePD(kPDRUNCFG_PD_VD7_ENA);
+    POWER_DisablePD(kPDRUNCFG_PD_VREFP_SW);
+    //POWER_DisablePD(kPDRUNCFG_PD_TEMPS);
+    CLOCK_EnableClock(kCLOCK_Adc0); /* SYSCON->AHBCLKCTRL[0] |= SYSCON_AHBCLKCTRL_ADC0_MASK; */
+
   	/* Init board hardware. */
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
@@ -78,26 +64,27 @@ int main(void) {
   	/* Init FSL debug console. */
     BOARD_InitDebugConsole();
 
-    xmit.data = StartAddress;
-    xmit.dataSize = sizeof(StartAddress);
-    txOnGoing = true;
-
-    if(USART_TransferSendDMA(FLEXCOMM0_PERIPHERAL,&FLEXCOMM0_USART_DMA_Handle,&xmit) == kStatus_Success);
-    else PRINTF("Fallo envio\r\n");
-
-    while(txOnGoing);
-
-    if(USART_TransferSendDMA(FLEXCOMM0_PERIPHERAL,&FLEXCOMM0_USART_DMA_Handle,&xmit) == kStatus_Success);
-    else PRINTF("Fallo envio\r\n");
+    PRINTF("Joystick & Potenciometer\n");
 
     /* Force the counter to be placed into memory. */
     volatile static int i = 0 ;
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
-        i++ ;
-        /* 'Dummy' NOP to allow source level single stepping of
-            tight while() loop */
-        __asm volatile ("nop");
+
+    	ADC_EnableConvSeqABurstMode(ADC0_PERIPHERAL,true);
+
+    	while((ADC_GetStatusFlags(ADC0_PERIPHERAL)&kADC_GlobalOverrunFlagForSeqA) != kADC_GlobalOverrunFlagForSeqA);
+
+    	ADC_EnableConvSeqABurstMode(ADC0_PERIPHERAL,false);
+
+    	ADC_GetChannelConversionResult(ADC0_PERIPHERAL,11,&adc_data[0]);
+    	ADC_GetChannelConversionResult(ADC0_PERIPHERAL,1,&adc_data[1]);
+
+    	PRINTF("Values = %u,%u\r\n",adc_data[0].result,adc_data[1].result);
+
+    	ADC_ClearStatusFlags(ADC0_PERIPHERAL,kADC_GlobalOverrunFlagForSeqA);
+
+    	for(i=1000000;i>0;i--);
     }
     return 0 ;
 }
