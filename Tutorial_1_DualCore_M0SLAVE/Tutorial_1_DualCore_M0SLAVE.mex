@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<configuration name="LPC54114J256" version="1.7" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_1.7 http://mcuxpresso.nxp.com/XSD/mex_configuration_1.7.xsd" uuid="bc9f0649-24dd-4e2b-870f-c8987dd8c883" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_1.7" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <common>
+      <processor>LPC54114J256</processor>
+      <package>LPC54114J256BD64</package>
+      <board>LPCXpresso54114</board>
+      <mcu_data>ksdk2_0</mcu_data>
+      <cores selected="cm0plus">
+         <core name="Cortex-M0P" id="cm0plus" description=""/>
+         <core name="Cortex-M4F" id="cm4" description=""/>
+      </cores>
+      <description>Configuration imported from Tutorial_1_DualCore_M0SLAVE</description>
+   </common>
+   <preferences>
+      <validate_boot_init_only>true</validate_boot_init_only>
+      <generate_extended_information>false</generate_extended_information>
+      <generate_code_modified_registers_only>false</generate_code_modified_registers_only>
+   </preferences>
+   <tools>
+      <pins name="Pins" version="7.0" enabled="true" update_project_code="true">
+         <generated_project_files>
+            <file path="board/pin_mux.c" update_enabled="true"/>
+            <file path="board/pin_mux.h" update_enabled="true"/>
+         </generated_project_files>
+         <pins_profile>
+            <processor_version>7.0.1</processor_version>
+            <pin_labels>
+               <pin_label pin_num="3" pin_signal="PIO0_25/FC4_RTS_SCL_SSEL1/FC6_CTS_SDA_SSEL0/CTIMER0_CAP2/CTIMER1_CAP1" label="J1[1]/JS4[1]/U10[7]/P0_25-FC4_SCLX" identifier="FC4_SCLX"/>
+               <pin_label pin_num="2" pin_signal="PIO0_24/FC1_CTS_SDA_SSEL0/CTIMER0_CAP1/CTIMER0_MAT0" label="J4[10]/JS2[1]/JS5[3]/U10[5]/U12[E6]/SW1/BRIDGE_SDA-WAKEUP" identifier="SW1;BRIDGE_SDA;LINK2MCU_SDA"/>
+               <pin_label pin_num="1" pin_signal="PIO0_23/FC1_RTS_SCL_SSEL1/CTIMER0_CAP0/UTICK_CAP1" label="J4[9]/JS3[1]/JS4[3]/U10[7]/U12[D6]/BRIDGE_SCL" identifier="BRIDGE_SCL;LINK2MCU_SCL"/>
+               <pin_label pin_num="4" pin_signal="PIO0_26/FC4_CTS_SDA_SSEL0/CTIMER0_CAP3" label="J1[3]/JS5[1]/U10[5]/P0_26-FC4_SDAX" identifier="FC4_SDAX"/>
+               <pin_label pin_num="5" pin_signal="USB0_DP" label="J5[3]/U7[2]/USB_DP" identifier="USB_DP"/>
+               <pin_label pin_num="6" pin_signal="USB0_DM" label="J5[2]/U7[3]/USB_DM" identifier="USB_DM"/>
+               <pin_label pin_num="7" pin_signal="PIO1_16/PDM0_DATA/CTIMER0_MAT0/CTIMER0_CAP0/FC7_RTS_SCL_SSEL1" label="J1[19]/P1_16-CT32B0_MAT0-GYRO_INT1"/>
+               <pin_label pin_num="8" pin_signal="VDD8" label="VDD_LPC5411x_IC"/>
+               <pin_label pin_num="24" pin_signal="VDD24" label="VDD_LPC5411x_IC"/>
+               <pin_label pin_num="34" pin_signal="VDD34" label="VDD_LPC5411x_IC"/>
+               <pin_label pin_num="56" pin_signal="VDD56" label="VDD_LPC5411x_IC"/>
+               <pin_label pin_num="55" pin_signal="VSS55" label="GND"/>
+               <pin_label pin_num="25" pin_signal="VSS25" label="GND"/>
+               <pin_label pin_num="9" pin_signal="VSS9" label="GND"/>
+               <pin_label pin_num="23" pin_signal="VDDA" label="VDD_LPC5411x_IC"/>
+               <pin_label pin_num="22" pin_signal="VREFP" label="SJ2[2]/P4[1]/VDD_LPC5411x_IC"/>
+               <pin_label pin_num="21" pin_signal="VREFN" label="SJ1[2]/P4[3]/GND"/>
+               <pin_label pin_num="10" pin_signal="PIO1_17/MCLK/UTICK_CAP3" label="J9[9]/P1_17-IR_LEARN_EN"/>
+               <pin_label pin_num="11" pin_signal="PIO0_29/FC1_RXD_SDA_MOSI/SCT0_OUT2/CTIMER0_MAT3/CTIMER0_CAP1/CTIMER0_MAT1/ADC0_0" label="J2[5]/D2[1]/P0_29-CT32B0_MAT3-RED" identifier="LED_RED"/>
+               <pin_label pin_num="12" pin_signal="PIO0_30/FC1_TXD_SCL_MISO/SCT0_OUT3/CTIMER0_MAT2/CTIMER0_CAP2/ADC0_1" label="J9[2]/P0_30-ADC1" identifier="JoyStick"/>
+               <pin_label pin_num="13" pin_signal="PIO0_31/PDM0_CLK/FC2_CTS_SDA_SSEL0/CTIMER2_CAP2/CTIMER0_CAP3/CTIMER0_MAT3/ADC0_2" label="J2[17]/J3[2]/P1[7]/U3[4]/SW2/P0_31-PDM0_CLK-ISP0_EN" identifier="SW2"/>
+               <pin_label pin_num="14" pin_signal="PIO1_0/PDM0_DATA/FC2_RTS_SCL_SSEL1/CTIMER3_MAT1/CTIMER0_CAP0/ADC0_3" label="J2[3]/P1_0-PDM0_DATA-CT32B3_MAT1"/>
+               <pin_label pin_num="15" pin_signal="PIO1_1/SWO/SCT0_OUT4/FC5_SSEL2/FC4_TXD_SCL_MISO/ADC0_4" label="J1[15]/P1_1-FC5_SSEL2"/>
+               <pin_label pin_num="16" pin_signal="PIO1_2/MCLK/FC7_SSEL3/SCT0_OUT5/FC5_SSEL3/FC4_RXD_SDA_MOSI/ADC0_5" label="J9[7]/JS8[1]/U5[1]/P1_2-FC5_SSEL3" identifier="SPI_FLASH_CS"/>
+               <pin_label pin_num="17" pin_signal="PIO1_3/FC7_SSEL2/SCT0_OUT6/FC3_SCK/CTIMER0_CAP1/USB0_UP_LED/ADC0_6" label="J2[20]/P1_3-FC7_SSEL2-CT32B0_CAP1"/>
+               <pin_label pin_num="18" pin_signal="PIO1_4/PDM1_CLK/FC7_RTS_SCL_SSEL1/SCT0_OUT7/FC3_TXD_SCL_MISO/CTIMER0_MAT1/ADC0_7" label="J2[18]/J9[10]/P1_4-ADC7-PDM1_CLK-FC7_RTS-FC3_TXD"/>
+               <pin_label pin_num="19" pin_signal="PIO1_5/PDM1_DATA/FC7_CTS_SDA_SSEL0/CTIMER1_CAP0/CTIMER1_MAT3/USB0_FRAME/ADC0_8" label="J2[16]/J9[12]/P1_5-ADC8-PDM1_DAT-FC7_CTS"/>
+               <pin_label pin_num="20" pin_signal="VSSA" label="GND"/>
+               <pin_label pin_num="26" pin_signal="PIO1_6/FC7_SCK/CTIMER1_CAP2/CTIMER1_MAT2/USB0_VBUS/ADC0_9" label="J1[14]/J5[1]/JP10[2]/P1_6-FC7_SCK-USB_VBUS" identifier="USB_VBUS"/>
+               <pin_label pin_num="27" pin_signal="PIO1_7/FC7_RXD_SDA_MOSI_DATA/CTIMER1_MAT2/CTIMER1_CAP2/ADC0_10" label="J1[10]/P1_7-FC7_RXD_SDA_MOSI_DATA"/>
+               <pin_label pin_num="28" pin_signal="PIO1_8/FC7_TXD_SCL_MISO_WS/CTIMER1_MAT3/CTIMER1_CAP3/ADC0_11" label="J1[12]/J9[6]/P1_8-ADC11-FC7_TXD_SCL_MISO_FRAME" identifier="Potenciometer"/>
+               <pin_label pin_num="29" pin_signal="PIO1_9/FC3_RXD_SDA_MOSI/CTIMER0_CAP2/USB0_UP_LED" label="J9[5]/D2[3]/P1_9-BLUE_LED" identifier="LED_BLUE"/>
+               <pin_label pin_num="30" pin_signal="PIO1_10/FC6_TXD_SCL_MISO_WS/SCT0_OUT4/FC1_SCK/USB0_FRAME" label="J9[8]/D2[4]/P1_10-SCT4-LED_GREEN" identifier="LED_GREEN"/>
+               <pin_label pin_num="31" pin_signal="PIO0_0/FC0_RXD_SDA_MOSI/FC3_CTS_SDA_SSEL0/CTIMER0_CAP0/SCT0_OUT3" label="U18[4]/TO_MUX_P0_0-ISP_RX" identifier="DEBUG_UART_RX"/>
+               <pin_label pin_num="32" pin_signal="PIO0_1/FC0_TXD_SCL_MISO/FC3_RTS_SCL_SSEL1/CTIMER0_CAP1/SCT0_OUT1" label="U6[4]/U22[3]/P0_1-ISP_TX" identifier="DEBUG_UART_TX"/>
+               <pin_label pin_num="33" pin_signal="RTCXIN" label="JS18[2]/Y1/RTCXIN"/>
+               <pin_label pin_num="35" pin_signal="RTCXOUT" label="JS17/Y1/RTCXOUT"/>
+               <pin_label pin_num="36" pin_signal="PIO0_2/FC0_CTS_SDA_SSEL0/FC2_SSEL3/CTIMER2_CAP1" label="J9[1]/P0_2-GPIO_SPI_CS"/>
+               <pin_label pin_num="37" pin_signal="PIO0_3/FC0_RTS_SCL_SSEL1/FC2_SSEL2/CTIMER1_MAT3" label="J9[3]/P0_3-GPIO_SPI_CS"/>
+               <pin_label pin_num="38" pin_signal="PIO0_4/FC0_SCK/FC3_SSEL2/CTIMER0_CAP2" label="J4[7]/U9[12]/SW3/BRIDGE_T_INTR-ISP1" identifier="SW3;BRIDGE_T_INTR"/>
+               <pin_label pin_num="39" pin_signal="PIO0_5/FC6_RXD_SDA_MOSI_DATA/SCT0_OUT6/CTIMER0_MAT0" label="J1[20]/P0_5-FC6_RXD_SDA_MOSI_DATA"/>
+               <pin_label pin_num="40" pin_signal="PIO0_6/FC6_TXD_SCL_MISO_WS/CTIMER0_MAT1/UTICK_CAP0" label="J1[18]/P0_6-FC6_TXD_SCL_MISO_FRAME"/>
+               <pin_label pin_num="41" pin_signal="PIO0_7/FC6_SCK/SCT0_OUT0/CTIMER0_MAT2/CTIMER0_CAP2" label="J1[16]/P0_7-FC6_SCK"/>
+               <pin_label pin_num="42" pin_signal="PIO1_11/FC6_RTS_SCL_SSEL1/CTIMER1_CAP0/FC4_SCK/USB0_VBUS" label="J2[19]/P1_11-FC6_RTS_SSEL1-MAG_DRDY"/>
+               <pin_label pin_num="43" pin_signal="PIO0_8/FC2_RXD_SDA_MOSI/SCT0_OUT1/CTIMER0_MAT3" label="J2[15]/P0_8-FC2_RXD_SDA_MOSI"/>
+               <pin_label pin_num="44" pin_signal="PIO0_9/FC2_TXD_SCL_MISO/SCT0_OUT2/CTIMER3_CAP0/FC3_CTS_SDA_SSEL0" label="J2[13]/P0_9-FC2_TXD_SCL_MISO"/>
+               <pin_label pin_num="45" pin_signal="PIO0_10/FC2_SCK/SCT0_OUT3/CTIMER3_MAT0" label="J2[11]/P0_10-FC2_SCK-CT32B3_MAT0"/>
+               <pin_label pin_num="46" pin_signal="PIO0_11/FC3_SCK/FC6_RXD_SDA_MOSI_DATA/CTIMER2_MAT1" label="J4[4]/U9[13]/BRIDGE_T_SCK" identifier="BRIDGE_T_SCK"/>
+               <pin_label pin_num="47" pin_signal="PIO0_12/FC3_RXD_SDA_MOSI/FC6_TXD_SCL_MISO_WS/CTIMER2_MAT3" label="J4[2]/U9[11]/BRIDGE_T_MOSI" identifier="BRIDGE_T_MOSI"/>
+               <pin_label pin_num="48" pin_signal="PIO0_13/FC3_TXD_SCL_MISO/SCT0_OUT4/CTIMER2_MAT0" label="J4[3]/U15[4]/BRIDGE_T_MISO" identifier="BRIDGE_T_MISO"/>
+               <pin_label pin_num="49" pin_signal="PIO0_14/FC3_CTS_SDA_SSEL0/SCT0_OUT5/CTIMER2_MAT1/FC1_SCK" label="J2[12]/J4[1]/U9[14]/BRIDGE_T_SSEL-SPIFI_IO3" identifier="BRIDGE_T_SSEL"/>
+               <pin_label pin_num="50" pin_signal="PIO0_15/FC3_RTS_SCL_SSEL1/SWO/CTIMER2_MAT2/FC4_SCK" label="J2[10]/JS30/U4[12]/TDO-SWO_TRGT-SPIFI_IO2" identifier="DEBUG_SWD_SWO"/>
+               <pin_label pin_num="51" pin_signal="PIO1_12/FC5_RXD_SDA_MOSI/CTIMER1_MAT0/FC7_SCK/UTICK_CAP2" label="J2[9]/P1_12-CT32B1_MAT0-ACCl_INT1"/>
+               <pin_label pin_num="52" pin_signal="PIO0_16/FC3_SSEL2/FC6_CTS_SDA_SSEL0/CTIMER3_MAT1/SWCLK" label="J2[4]/JS28/U4[4]/TCK-SWDCLK_TRGT-SPIFI_IO1" identifier="DEBUG_SWD_SWDCLK"/>
+               <pin_label pin_num="53" pin_signal="PIO0_17/FC3_SSEL3/FC6_RTS_SCL_SSEL1/CTIMER3_MAT2/SWDIO" label="J2[6]/P1[2]/U2[5]/U14[4]/IF_TMS_SWDIO-SPIFI_IO0" identifier="DEBUG_SWD_SWDIO"/>
+               <pin_label pin_num="54" pin_signal="PIO1_13/FC5_TXD_SCL_MISO/CTIMER1_MAT1/FC7_RXD_SDA_MOSI_DATA" label="J2[7]/P1_13-CT32B1_MAT1"/>
+               <pin_label pin_num="57" pin_signal="PIO1_14/FC2_RXD_SDA_MOSI/SCT0_OUT7/FC7_TXD_SCL_MISO_WS" label="J2[1]/P1_14-SCTO7"/>
+               <pin_label pin_num="58" pin_signal="PIO0_18/FC5_TXD_SCL_MISO/SCT0_OUT0/CTIMER0_MAT0" label="J1[11]/U5[2]/P0_18-FC5_TXD_SCL_MISO" identifier="SPI_FLASH_MISO"/>
+               <pin_label pin_num="59" pin_signal="PIO0_19/FC5_SCK/SCT0_OUT1/CTIMER0_MAT1" label="J1[9]/J2[8]/U5[6]/P0_19-FC5_SCK-SPIFI_CSn" identifier="SPI_FLASH_SCK"/>
+               <pin_label pin_num="60" pin_signal="PIO0_20/FC5_RXD_SDA_MOSI/FC0_SCK/CTIMER3_CAP0" label="J1[13]/U5[5]/P0_20-FC5_RXD_SDA_MOSI" identifier="SPI_FLASH_MOSI"/>
+               <pin_label pin_num="61" pin_signal="PIO0_21/CLKOUT/FC0_TXD_SCL_MISO/CTIMER3_MAT0" label="J2[2]/P0_21-CLKOUT-SPIFI_CLK"/>
+               <pin_label pin_num="62" pin_signal="PIO1_15/PDM0_CLK/SCT0_OUT5/CTIMER1_CAP3/FC7_CTS_SDA_SSEL0" label="J1[17]/P1_15-SCTO5-FC7_CTS"/>
+               <pin_label pin_num="63" pin_signal="PIO0_22/CLKIN/FC0_RXD_SDA_MOSI/CTIMER3_MAT3" label="J4[8]/P0_22-BRIDGE_GPIO" identifier="BRIDGE_GPIO"/>
+               <pin_label pin_num="64" pin_signal="RESET" label="J3[1]/J8[9]/J8[10]/JP7[1]/JS9[1]/JS12[1]/JS29/D4[1]/U4[8]/U5[7]/U10[22]/SW4/nRESET_TRGT" identifier="RESET"/>
+            </pin_labels>
+         </pins_profile>
+         <functions_list>
+            <function name="BOARD_InitPins_cm0plus">
+               <description>Configures pin routing and optionally pin electrical features.</description>
+               <options>
+                  <callFromInitBoot>true</callFromInitBoot>
+                  <prefix>BOARD_</prefix>
+                  <coreID>cm0plus</coreID>
+                  <enableClock>true</enableClock>
+               </options>
+               <dependencies>
+                  <dependency resourceType="Peripheral" resourceId="ADC0" description="Peripheral ADC0 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_cm0plus">
+                     <feature name="initialized" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_cm0plus">
+                     <feature name="enabled" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <pins>
+                  <pin peripheral="ADC0" signal="CH, 1" pin_num="12" pin_signal="PIO0_30/FC1_TXD_SCL_MISO/SCT0_OUT3/CTIMER0_MAT2/CTIMER0_CAP2/ADC0_1"/>
+                  <pin peripheral="ADC0" signal="CH, 11" pin_num="28" pin_signal="PIO1_8/FC7_TXD_SCL_MISO_WS/CTIMER1_MAT3/CTIMER1_CAP3/ADC0_11"/>
+               </pins>
+            </function>
+         </functions_list>
+      </pins>
+      <clocks name="Clocks" version="7.0" enabled="true" update_project_code="true">
+         <generated_project_files>
+            <file path="board/clock_config.c" update_enabled="true"/>
+            <file path="board/clock_config.h" update_enabled="true"/>
+         </generated_project_files>
+         <clocks_profile>
+            <processor_version>7.0.1</processor_version>
+         </clocks_profile>
+         <clock_configurations>
+            <clock_configuration name="BOARD_BootClockVLPR">
+               <description></description>
+               <options/>
+               <dependencies>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Clocks initialization requires the COMMON Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockVLPR">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Clocks initialization requires the COMMON Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockVLPR">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.power" description="Clocks initialization requires the POWER Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockVLPR">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.power" description="Clocks initialization requires the POWER Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockVLPR">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.clock" description="Clocks initialization requires the CLOCK Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockVLPR">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.clock" description="Clocks initialization requires the CLOCK Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockVLPR">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <clock_sources/>
+               <clock_outputs>
+                  <clock_output id="System_clock.outFreq" value="12 MHz" locked="false" accuracy=""/>
+               </clock_outputs>
+               <clock_settings/>
+               <called_from_default_init>false</called_from_default_init>
+            </clock_configuration>
+            <clock_configuration name="BOARD_BootClockRUN">
+               <description></description>
+               <options/>
+               <dependencies>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Clocks initialization requires the COMMON Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Clocks initialization requires the COMMON Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.power" description="Clocks initialization requires the POWER Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.power" description="Clocks initialization requires the POWER Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.clock" description="Clocks initialization requires the CLOCK Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.clock" description="Clocks initialization requires the CLOCK Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <clock_sources/>
+               <clock_outputs>
+                  <clock_output id="System_clock.outFreq" value="48 MHz" locked="false" accuracy=""/>
+               </clock_outputs>
+               <clock_settings>
+                  <setting id="SYSCON.MAINCLKSELA.sel" value="SYSCON.fro_hf" locked="false"/>
+               </clock_settings>
+               <called_from_default_init>false</called_from_default_init>
+            </clock_configuration>
+            <clock_configuration name="BOARD_BootClockHSRUN">
+               <description></description>
+               <options/>
+               <dependencies>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Clocks initialization requires the COMMON Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockHSRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Clocks initialization requires the COMMON Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockHSRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.power" description="Clocks initialization requires the POWER Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockHSRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.power" description="Clocks initialization requires the POWER Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockHSRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.clock" description="Clocks initialization requires the CLOCK Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockHSRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.clock" description="Clocks initialization requires the CLOCK Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockHSRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <clock_sources>
+                  <clock_source id="SYSCON.fro_hf.outFreq" value="96 MHz" locked="false" enabled="false"/>
+               </clock_sources>
+               <clock_outputs>
+                  <clock_output id="ADC_clock.outFreq" value="48 MHz" locked="false" accuracy=""/>
+                  <clock_output id="System_clock.outFreq" value="96 MHz" locked="false" accuracy=""/>
+               </clock_outputs>
+               <clock_settings>
+                  <setting id="SYSCON.ADCCLKDIV.scale" value="2" locked="false"/>
+                  <setting id="SYSCON.ADCCLKSEL.sel" value="SYSCON.fro_hf" locked="false"/>
+                  <setting id="SYSCON.MAINCLKSELA.sel" value="SYSCON.fro_hf" locked="false"/>
+               </clock_settings>
+               <called_from_default_init>true</called_from_default_init>
+            </clock_configuration>
+         </clock_configurations>
+      </clocks>
+      <dcdx name="DCDx" version="2.0" enabled="false" update_project_code="true">
+         <generated_project_files/>
+         <dcdx_profile>
+            <processor_version>N/A</processor_version>
+         </dcdx_profile>
+         <dcdx_configurations/>
+      </dcdx>
+      <periphs name="Peripherals" version="7.0" enabled="true" update_project_code="true">
+         <dependencies>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.lpc_adc" description="ADC Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.lpc_adc" description="Unsupported version of the ADC Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">2.4.0</data>
+               </feature>
+            </dependency>
+         </dependencies>
+         <generated_project_files>
+            <file path="board/peripherals.c" update_enabled="true"/>
+            <file path="board/peripherals.h" update_enabled="true"/>
+         </generated_project_files>
+         <peripherals_profile>
+            <processor_version>7.0.1</processor_version>
+         </peripherals_profile>
+         <functional_groups>
+            <functional_group name="BOARD_InitPeripherals_cm4" uuid="35304192-dcd2-4c25-bdf3-6c9c60ec1aa8" called_from_default_init="false" id_prefix="" core="cm4">
+               <description></description>
+               <options/>
+               <dependencies/>
+               <instances/>
+            </functional_group>
+            <functional_group name="BOARD_InitPeripherals_cm0plus" uuid="52029ed6-c35d-48dd-bb29-3c4ad79cee97" called_from_default_init="true" id_prefix="" core="cm0plus">
+               <description></description>
+               <options/>
+               <dependencies>
+                  <dependency resourceType="ClockOutput" resourceId="ADC_clock" description="ADC clock is inactive. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm0plus">
+                     <feature name="frequency" evaluation="greaterThan">
+                        <data type="Frequency" unit="Hz">0</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC0.adc_se.1" description="Signal Input 1 of the peripheral ADC0 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm0plus">
+                     <feature name="routed" evaluation="">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC0.adc_se.11" description="Signal Input 11 of the peripheral ADC0 is not routed. Problem must be resolved in another tool." problem_level="1" source="Peripherals:BOARD_InitPeripherals_cm0plus">
+                     <feature name="routed" evaluation="">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <instances>
+                  <instance name="ADC0" uuid="b094b48e-7ebb-445b-9615-50985bdc58c3" type="lpc_adc" type_id="lpc_adc_d74172b5bd0591c0d32a6c93c043a67f" mode="ADC" peripheral="ADC0" enabled="true" comment="" custom_name_enabled="false">
+                     <config_set name="fsl_adc">
+                        <setting name="doSelfCalibration" value="true"/>
+                        <setting name="enableTempSensor" value="false"/>
+                        <struct name="adcConfig">
+                           <setting name="clockMode" value="kADC_ClockAsynchronousMode"/>
+                           <setting name="clockSourceFreq" value="BOARD_BootClockHSRUN"/>
+                           <setting name="clockDividerNumber" value="2"/>
+                           <setting name="resolution" value="kADC_Resolution12bit"/>
+                           <setting name="sampleTimeNumber" value="3"/>
+                           <setting name="enableBypassCalibration" value="false"/>
+                        </struct>
+                        <struct name="thresholdConfig">
+                           <setting name="ADC_SetThreshold0" value="false"/>
+                           <struct name="thresholdSettingsPair0">
+                              <setting name="lowValue" value="0"/>
+                              <setting name="highValue" value="0"/>
+                           </struct>
+                           <setting name="ADC_SetThreshold1" value="false"/>
+                           <struct name="thresholdSettingsPair1">
+                              <setting name="lowValue" value="0"/>
+                              <setting name="highValue" value="0"/>
+                           </struct>
+                        </struct>
+                        <setting name="enableSeqConfigurationA" value="true"/>
+                        <struct name="adcConvSeqConfigA">
+                           <setting name="enableHighPriority" value="false"/>
+                           <struct name="adcConvSeqConfig">
+                              <setting name="triggerMaskM" value="0U"/>
+                              <setting name="triggerPolarity" value="kADC_TriggerPolarityPositiveEdge"/>
+                              <setting name="enableSyncBypass" value="false"/>
+                              <setting name="enableSingleStep" value="false"/>
+                              <setting name="interruptMode" value="kADC_InterruptForEachSequence"/>
+                           </struct>
+                        </struct>
+                        <setting name="enableSeqConfigurationB" value="false"/>
+                        <struct name="adcConvSeqConfigB">
+                           <setting name="enableHighPriority" value="false"/>
+                           <struct name="adcConvSeqConfig">
+                              <setting name="triggerMaskM" value="0U"/>
+                              <setting name="triggerPolarity" value="kADC_TriggerPolarityNegativeEdge"/>
+                              <setting name="enableSyncBypass" value="false"/>
+                              <setting name="enableSingleStep" value="false"/>
+                              <setting name="interruptMode" value="kADC_InterruptForEachConversion"/>
+                           </struct>
+                        </struct>
+                        <array name="channels">
+                           <struct name="0">
+                              <setting name="channelNumber" value="CH.1"/>
+                              <setting name="channelThresholdPair" value="thresholdPair0"/>
+                              <setting name="thresholdInterruptMode" value="kADC_ThresholdInterruptDisabled"/>
+                              <setting name="conversion_sequence" value="a"/>
+                           </struct>
+                           <struct name="1">
+                              <setting name="channelNumber" value="CH.11"/>
+                              <setting name="channelThresholdPair" value="thresholdPair0"/>
+                              <setting name="thresholdInterruptMode" value="kADC_ThresholdInterruptDisabled"/>
+                              <setting name="conversion_sequence" value="a"/>
+                           </struct>
+                        </array>
+                        <set name="interrupt_sel">
+                           <selected/>
+                        </set>
+                        <setting name="enable_irq_seqA" value="false"/>
+                        <struct name="adc_interrupt_seqA">
+                           <setting name="IRQn" value="ADC0_SEQA_IRQn"/>
+                           <setting name="enable_priority" value="false"/>
+                           <setting name="priority" value="0"/>
+                           <setting name="enable_custom_name" value="false"/>
+                        </struct>
+                        <setting name="enable_irq_seqB" value="false"/>
+                        <struct name="adc_interrupt_seqB">
+                           <setting name="IRQn" value="ADC0_SEQB_IRQn"/>
+                           <setting name="enable_priority" value="false"/>
+                           <setting name="priority" value="0"/>
+                           <setting name="enable_custom_name" value="false"/>
+                        </struct>
+                        <setting name="enable_irq_thcmp" value="false"/>
+                        <struct name="adc_interrupt_thcmp">
+                           <setting name="IRQn" value="ADC0_THCMP_IRQn"/>
+                           <setting name="enable_priority" value="false"/>
+                           <setting name="priority" value="0"/>
+                           <setting name="enable_custom_name" value="false"/>
+                        </struct>
+                     </config_set>
+                  </instance>
+               </instances>
+            </functional_group>
+         </functional_groups>
+         <components>
+            <component name="system" uuid="c4102b00-f91c-4bf2-9188-285b9fffaaf9" type_id="system">
+               <config_set_global name="global_system_definitions"/>
+            </component>
+            <component name="msg" uuid="a37f46d0-da9e-4c5d-8ba2-258e9e98fe39" type_id="msg_6e2baaf3b97dbeef01c0043275f9a0e7">
+               <config_set_global name="global_messages"/>
+            </component>
+         </components>
+      </periphs>
+      <tee name="TEE" version="1.0" enabled="false" update_project_code="true">
+         <generated_project_files/>
+         <tee_profile>
+            <processor_version>N/A</processor_version>
+         </tee_profile>
+         <global_options/>
+         <user_memory_regions/>
+      </tee>
+   </tools>
+</configuration>
