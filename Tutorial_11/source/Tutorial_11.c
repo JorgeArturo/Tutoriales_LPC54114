@@ -29,78 +29,82 @@
  */
  
 /**
- * @file    Tutorial_1_DualCore_M0SLAVE.c
+ * @file    Tutorial_11.c
  * @brief   Application entry point.
  */
+
 #include <stdio.h>
 #include "board.h"
 #include "peripherals.h"
 #include "pin_mux.h"
 #include "clock_config.h"
-#include "LPC54114_cm0plus.h"
+#include "LPC54114_cm4.h"
 #include "fsl_debug_console.h"
-#include "fsl_mailbox.h"
-#include "fsl_power.h"
+#include "ov7670/ov7670.h"
+#include "ov7670/regs.h"
 /* TODO: insert other include files here. */
 
+uint8_t rowex[50112];
+uint8_t test = 0;
+uint32_t mycoord[2];
+uint8_t c;
+uint8_t cmd;
+uint8_t data;
 /* TODO: insert other definitions and declarations here. */
-adc_result_info_t exAdc[2];
-uint32_t adc_result_table[2];
+
 
 /*
  * @brief   Application entry point.
  */
 int main(void) {
 
-	SystemCoreClockUpdate();
+  	/* Init board hardware. */
+    BOARD_InitBootPins();
+    BOARD_InitBootClocks();
+    BOARD_InitBootPeripherals();
+  	/* Init FSL debug console. */
+    BOARD_InitDebugConsole();
 
-	MAILBOX_Init(MAILBOX);
-	while(MAILBOX_GetMutex(MAILBOX) == 0);
-	MAILBOX_SetMutex(MAILBOX);
 
-    POWER_DisablePD(kPDRUNCFG_PD_ADC0);
-    POWER_DisablePD(kPDRUNCFG_PD_VD7_ENA);
-    POWER_DisablePD(kPDRUNCFG_PD_VREFP_SW);
-    //POWER_DisablePD(kPDRUNCFG_PD_TEMPS);
-    CLOCK_EnableClock(kCLOCK_Adc0); /* SYSCON->AHBCLKCTRL[0] |= SYSCON_AHBCLKCTRL_ADC0_MASK; */
+    for(double i=200000;i>0;i--);
+    Camera_OV7670_I2C_WrReg(REG_COM7,0x80);
+    for(double i=1000000;i>0;i--); //Aproximadamente 1 segundo.
 
-    //Inicializacion de los pines
-	BOARD_InitBootPins();
+    //PRINTF("PID 0x%X,VER 0x%X\n",Camera_OV7670_I2C_RdReg(REG_PID),Camera_OV7670_I2C_RdReg(REG_VER));
+    //Camera_ov7670_ResolQVGAProcessedBayerRGBMode();
+    Camera_OV7670_I2C_WrReg(REG_COM10,0x24);	//VSYNC Low-High-Low , Pclk only when HREF is HIGH
+    Camera_OV7670_I2C_WrReg(REG_CLKRC, 0x05);	//Frecuencia de operacion a 2 Mhz
+    //Camera_OV7670_I2C_WrReg(SCALING_DCWCTR, 0x22);	//Scaling 1/2x
+    //Camera_OV7670_I2C_WrReg(REG_COM3, 0x06);		//Enable Zoom Horizontal & Vertical
+    //Camera_OV7670_I2C_WrReg(REG_COM14, 0x1B);		//Manual Adjustament
+    //Camera_OV7670_I2C_WrReg(REG_REG74, 0x02);
+    Camera_OV7670_I2C_WrReg(REG_COM7,0x08); //Salida QCIF
 
-	//Inicializacion de Reloj para perifericos
-    CLOCK_SetClkDiv(kCLOCK_DivAdcAsyncClk, 0U, true);
-    CLOCK_SetClkDiv(kCLOCK_DivAdcAsyncClk, 2U, false);
-    CLOCK_AttachClk(kFRO_HF_to_ADC_CLK);
 
-    //Inicializacion para perifericos
-	BOARD_InitBootPeripherals();
+    for(double i=3000000;i>0;i--);
 
-    PRINTF("Procesador M0+ Inicia...\n");
+	//for(uint16_t row=0;row<119;row++)
+		//for(uint16_t col=0;col<159;col++)
+			//USART_WriteBlocking(BOARD_DEBUG_UART_BASEADDR, &rowex[col][row], 1);
 
-    /* Force the counter to be placed into memory. */
+    //USART_WriteBlocking(BOARD_DEBUG_UART_BASEADDR,&rowex,1280);
+
 
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
 
-    	while(MAILBOX_GetMutex(MAILBOX) == 0);
+        c = (uint8_t)GETCHAR();
+    	cmd = (uint8_t)GETCHAR();
+    	data = (uint8_t)GETCHAR();
+        if(c == 0xFE){
 
-    	ADC_EnableConvSeqABurstMode(ADC0_PERIPHERAL,true);
+        	Camera_VGA_Frame(&mycoord);
+        	USART_WriteBlocking(BOARD_DEBUG_UART_BASEADDR, &rowex, 50112);
+        }
+        else if(c == 0xFC){
 
-    	while((ADC_GetStatusFlags(ADC0_PERIPHERAL)&kADC_GlobalOverrunFlagForSeqA) != kADC_GlobalOverrunFlagForSeqA);
-
-    	ADC_EnableConvSeqABurstMode(ADC0_PERIPHERAL,false);
-
-    	ADC_GetChannelConversionResult(ADC0_PERIPHERAL,1,&exAdc[0]);
-    	ADC_GetChannelConversionResult(ADC0_PERIPHERAL,11,&exAdc[1]);
-
-       	adc_result_table[0] = exAdc[0].result;
-       	adc_result_table[1] = exAdc[1].result;
-
-       	ADC_ClearStatusFlags(ADC0_PERIPHERAL,kADC_GlobalOverrunFlagForSeqA);
-
-        MAILBOX_SetValue(MAILBOX, kMAILBOX_CM0Plus, &adc_result_table[0]);
-        MAILBOX_SetMutex(MAILBOX);
-
+        	Camera_OV7670_I2C_WrReg(cmd,data);
+        }
 
     }
     return 0 ;
